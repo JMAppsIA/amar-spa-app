@@ -22,6 +22,10 @@
 
  const logo = require('Assets/images/logo.png');
  const logoNoBg = require('Assets/images/logo-no-bg.png');
+ const logoOnly = require('Assets/images/logo-only.png');
+
+ const girlOne = require('Assets/images/girl-one-no-bg.png');
+ const leafs = require('Assets/images/leafs.png');
 
 
  const backgroundOne = require('Assets/images/background1.jpg');
@@ -38,6 +42,7 @@
  const plus = require('Assets/images/icons/plus.png');
  const right_arrow = require('Assets/images/icons/right_arrow.png');
  const log_out = require('Assets/images/icons/logout.png');
+ const cloud = require('Assets/images/icons/cloud.png');
  
  /**
   * export the images object
@@ -56,6 +61,8 @@
      otp,
      logo,
      logoNoBg,
+     logoOnly,
+     girlOne,
      backgroundOne,
      backgroundTwo,
      backgroundThree,
@@ -67,6 +74,8 @@
      color_bar,
      plus,
      right_arrow,
-     log_out
+     log_out,
+     cloud,
+     leafs
  };
  
