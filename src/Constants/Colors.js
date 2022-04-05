@@ -1,7 +1,7 @@
 const Colors = {
     background: '#FFFFFF',
-
-    primary: '#22818B',
+    backgroundTwo: '#F8F8F8',
+    primary: '#B8E8D1',
     secondary: '#8D492F',
     accent: '#62CE9A',
     grey0: '#333333',
@@ -33,14 +33,14 @@ const Colors = {
 
     platform: {
         ios: {
-            primary: '#22818B',
+            primary: '#B8E8D1',
             secondary: '#8D492F',
             success: '#27AE60',
             error: '#EB5757',
             warning: '#F2994A',
         },
         android: {
-            primary: '#22818B',
+            primary: '#B8E8D1',
             secondary: '#8D492F',
             success: '#27AE60',
             error: '#EB5757',

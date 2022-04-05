@@ -9,7 +9,7 @@ const McText = styled.Text`
   /* default left */
   text-align: ${props => props.align || 'left'};
   
-  ${({ regular, bold, semi, extra, black, medium }) => {
+  ${({ regular, bold, semi, extra, black, medium, background }) => {
     switch (true) {
       case regular: {
         return { fontFamily: Fonts.type.primary };
@@ -89,6 +89,16 @@ const McText = styled.Text`
         return {
           fontFamily: Fonts.type.regular,
           fontSize: `${Metrics.body6}px`,
+        };
+      }
+    }
+  }}
+  ${({ background }) => {
+    switch (true) {
+      case background: {
+        return {
+          background: '#B8E8D1',
+          borderRadius: 10,
         };
       }
     }

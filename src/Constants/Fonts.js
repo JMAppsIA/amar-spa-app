@@ -25,7 +25,7 @@
 const type = {
     primary: 'SFProDisplay-Regular',
     secondary: 'SFProDisplay-Medium',
-    medium: 'SFProDisplay-MediumItalic',
+    medium: 'SFProDisplay-Medium',
     bold: 'SFProDisplay-Bold',
     semi: 'SFProDisplay-Semibold',
     stylish: 'SFProDisplay-ThinItalic',

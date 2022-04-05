@@ -10,7 +10,8 @@ import Animated from "react-native-reanimated";
 
 import { McText, McImage } from "Components";
 import { Images } from "Constants";
-import { Home, Profile, Settings } from "Screens";
+import { Home, Profile, Services, Settings } from "Screens";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const menuOptions = [
   {
@@ -151,11 +152,16 @@ const CustomDrawerContent = ({ navigation, theme }) => {
           marginLeft: 30,
         }}
       >
-        <View
+        <TouchableOpacity
           style={{
             flexDirection: "row",
             justifyContent: "flex-start",
             alignItems: "center",
+          }}
+          onPress={() => {
+            // Simulates sign out and go to Sign in Screen
+            navigation.closeDrawer();
+            navigation.navigate('SignIn');
           }}
         >
           <McImage
@@ -168,7 +174,7 @@ const CustomDrawerContent = ({ navigation, theme }) => {
           <McText bold size={16} color={theme.colors.text2}>
             Cerrar Sesión
           </McText>
-        </View>
+        </TouchableOpacity>
         <View style={{ marginTop: 62 }}>
           <McText medium size={10} color={theme.colors.text2}>
             Versión 1.0.0
@@ -209,7 +215,7 @@ const DrawerMenu = () => {
   };
 
   return (
-    <View
+    <Animated.View
       style={{
         flex: 1,
         backgroundColor: theme.colors.boxBackground,
@@ -242,16 +248,24 @@ const DrawerMenu = () => {
         }}
       >
         <Drawer.Screen name="HomeScreen">
-          {(props) => <Home {...props} animatedStyle={animatedStyle} />}
+          {(props) => <Home {...props} 
+          style={{
+            borderRadius,
+            transform: [{ scale, rotateZ: rotate }],
+          }} 
+          animatedStyle={animatedStyle} />}
         </Drawer.Screen>
         <Drawer.Screen name="ProfileScreen">
           {(props) => <Profile {...props} animatedStyle={animatedStyle} />}
+        </Drawer.Screen>
+        <Drawer.Screen name="ServicesScreen">
+          {(props) => <Services {...props} animatedStyle={animatedStyle} />}
         </Drawer.Screen>
         <Drawer.Screen name="SettingsScreen">
           {(props) => <Settings {...props} animatedStyle={animatedStyle} />}
         </Drawer.Screen>
       </Drawer.Navigator>
-    </View>
+    </Animated.View>
   );
 };
 
