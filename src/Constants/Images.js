@@ -27,6 +27,14 @@
  const girlOne = require('Assets/images/girl-one-no-bg.png');
  const leafs = require('Assets/images/leafs.png');
 
+ const verified = require('Assets/images/verified.png');
+ const notVerified = require('Assets/images/not-verified.png');
+
+ const visa = require('Assets/images/icons/visa.png')
+ const masterCard = require('Assets/images/icons/mastercard.png')
+ const americanExpress = require('Assets/images/icons/americanexpress.png')
+
+
 
  const backgroundOne = require('Assets/images/background1.jpg');
  const backgroundTwo = require('Assets/images/background2.jpg');
@@ -76,6 +84,11 @@
      right_arrow,
      log_out,
      cloud,
-     leafs
+     leafs,
+     verified,
+     notVerified,
+     visa,
+     masterCard,
+     americanExpress
  };
  

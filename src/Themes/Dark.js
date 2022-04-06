@@ -16,7 +16,8 @@ const Dark = {
         text2: '#7B7F9E',
         text3: '#7B7F9E',
         boxBackground: '#212330',
-        primaryBackground: '#B8E8D1'
+        primaryBackground: '#B8E8D1',
+        iconBackground: '#FFFFFF',
     },
 };
 

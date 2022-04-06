@@ -16,7 +16,8 @@ const Light = {
         text2: '#3A4276',
         text3: '#32463D',
         boxBackground: '#F1F3F6',
-        primaryBackground: '#B8E8D1'
+        primaryBackground: '#B8E8D1',
+        iconBackground: '#000000'
     },
 };
 
