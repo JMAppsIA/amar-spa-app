@@ -1,10 +1,13 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, {useEffect} from 'react';
+import { View, Text, StatusBar } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { useTheme } from 'styled-components';
 
-const Services = ({ animatedStyle }) => {
+const Services = () => {
     const theme = useTheme()
+    useEffect(() => {
+        StatusBar.setHidden(true, 'none');
+      })
     return (
         <Animated.View
             style={{
@@ -12,7 +15,6 @@ const Services = ({ animatedStyle }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: theme.colors.background,
-                ...animatedStyle
             }}
         >
             <Text>Services Screen</Text>

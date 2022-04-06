@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { View, StatusBar, TouchableOpacity } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
@@ -7,6 +7,9 @@ import { Images } from 'Constants'
 
 const SignIn = ({ navigation }) => {
   const theme = useTheme();
+  useEffect(() => {
+    StatusBar.setHidden(true, 'none');
+  })
   return (
     <View>
       <StatusBar hidden={true}/>

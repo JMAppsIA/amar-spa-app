@@ -1,14 +1,17 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, {useEffect} from 'react';
+import { View, Text, StatusBar } from 'react-native';
 import { Switch } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { useTheme } from 'styled-components';
 import { McText } from '../../Components';
 import { useThemeContext } from 'Themes';
 
-const Settings = ({ animatedStyle }) => {
+const Settings = () => {
     const theme = useTheme()
     const themeContext = useThemeContext()
+    useEffect(() => {
+        StatusBar.setHidden(true, 'none');
+      })
     return (
         <Animated.View
             style={{
@@ -16,7 +19,6 @@ const Settings = ({ animatedStyle }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 backgroundColor: theme.colors.background,
-                ...animatedStyle
             }}
         >
             <McText bold size={24} color={theme.colors.text1}>Settings Screen</McText>

@@ -1,3 +1,4 @@
 import Categories from './Categories';
 import Services from './Services';
-export { Categories, Services };
+import MenuOptions from './MenuOptions';
+export { Categories, Services, MenuOptions };

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StatusBar } from "react-native";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
   DrawerItem,
+  useDrawerProgress,
+  useDrawerStatus,
 } from "@react-navigation/drawer";
 import { useTheme } from "styled-components/native";
 import Animated from "react-native-reanimated";
@@ -12,44 +14,20 @@ import { McText, McImage } from "Components";
 import { Images } from "Constants";
 import { Home, Profile, Services, Settings } from "Screens";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { MenuOptions } from "Mock";
 
-const menuOptions = [
-  {
-    name: "Home",
-    label: "Inicio",
-  },
-  {
-    name: "Profile",
-    label: "Perfil",
-  },
-  {
-    name: "Services",
-    label: "Servicios",
-  },
-  {
-    name: "Featured",
-    label: "Destacados",
-  },
-  {
-    name: "Reservation",
-    label: "Mis Reservas",
-  },
-  {
-    name: "Settings",
-    label: "Configuración",
-  },
-  {
-    name: "Help",
-    label: "Ayuda",
-  },
-];
 
 const Drawer = createDrawerNavigator();
 
 const CustomDrawerContent = ({ navigation, theme }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <View style={{ flex: 1 }}>
+    <View
+     style={{ 
+      flex: 1,
+    }}
+      >
       {/*Header START */}
       <View
         style={{
@@ -104,7 +82,7 @@ const CustomDrawerContent = ({ navigation, theme }) => {
         contentContainerStyle={{}}
         style={{ marginLeft: -18 }}
       >
-        {menuOptions?.map((option, index) => {
+        {MenuOptions?.map((option, index) => {
           return (
             <DrawerItem
               activeTintColor={theme.colors.boxBackground}
@@ -186,36 +164,56 @@ const CustomDrawerContent = ({ navigation, theme }) => {
   );
 };
 
-const DrawerMenu = () => {
+const DrawerScreenContainer = ({children}) => {
   const theme = useTheme();
-  const [progress, setProgress] = useState(new Animated.Value(0));
-
-  /**
-   * 3 ANIMATIONS
-   */
-
-  const scale = Animated.interpolateNode(progress, {
+  const progress = useDrawerProgress();
+  const { value } = progress;
+  const scale = Animated.interpolateNode(value, {
     inputRange: [0, 1],
     outputRange: [1, 0.75],
   });
 
-  const rotate = Animated.interpolateNode(progress, {
+  const rotate = Animated.interpolateNode(value, {
     inputRange: [0, 1],
-    outputRange: ["0deg", "-10deg"],
+    outputRange: ['0deg', '-10deg'],
   });
 
-  const borderRadius = Animated.interpolateNode(progress, {
+  const borderRadius = Animated.interpolateNode(value, {
     inputRange: [0, 1],
     outputRange: [1, 30],
   });
 
   const animatedStyle = {
     borderRadius,
-    transform: [{ scale, rotateZ: rotate }],
+    transform: [{ scale, 
+      // rotateZ: rotate 
+    }],
   };
+
+  const isDrawerOpen = useDrawerStatus();
 
   return (
     <Animated.View
+      style={{
+        flex: 1,
+        backgroundColor: theme.colors.white,
+        overflow: 'hidden',
+        ...animatedStyle
+      }}>
+      <StatusBar
+        backgroundColor={isDrawerOpen == 'open' ? theme.colors.text1 : theme.colors.white}
+        barStyle="dark-content"
+      />
+      {children}
+    </Animated.View>
+  )
+}
+
+const DrawerMenu = () => {
+  const theme = useTheme();
+
+  return (
+    <View
       style={{
         flex: 1,
         backgroundColor: theme.colors.boxBackground,
@@ -224,7 +222,7 @@ const DrawerMenu = () => {
       <Drawer.Navigator
         screenOptions={{
           headerShown: false,
-          drawerHideStatusBarOnOpen: true,
+          // drawerHideStatusBarOnOpen: true,
           drawerStyle: {
             flex: 1,
             width: "60%",
@@ -237,35 +235,42 @@ const DrawerMenu = () => {
           },
           hideStatusBar: true,
         }}
-        initialRouteName="Home"
+        initialRouteName="Main"
         drawerContent={(props) => {
-          setTimeout(() => {
-            setProgress(props.progress)
-          }, 0);
           return (
             <CustomDrawerContent navigation={props.navigation} theme={theme} />
           );
         }}
-      >
-        <Drawer.Screen name="HomeScreen">
-          {(props) => <Home {...props} 
-          style={{
-            borderRadius,
-            transform: [{ scale, rotateZ: rotate }],
-          }} 
-          animatedStyle={animatedStyle} />}
+      > 
+        <Drawer.Screen name="Main">
+          {(props) => (
+            <DrawerScreenContainer>
+              <Home {...props}/>
+            </DrawerScreenContainer>)}
         </Drawer.Screen>
-        <Drawer.Screen name="ProfileScreen">
-          {(props) => <Profile {...props} animatedStyle={animatedStyle} />}
+        <Drawer.Screen name="Profile">
+          {(props) => (
+            <DrawerScreenContainer>
+              <Profile {...props} />
+            </DrawerScreenContainer>
+          )}
         </Drawer.Screen>
-        <Drawer.Screen name="ServicesScreen">
-          {(props) => <Services {...props} animatedStyle={animatedStyle} />}
+        <Drawer.Screen name="Services">
+          {(props) => (
+            <DrawerScreenContainer>
+              <Services {...props} />
+            </DrawerScreenContainer>
+          )}
         </Drawer.Screen>
-        <Drawer.Screen name="SettingsScreen">
-          {(props) => <Settings {...props} animatedStyle={animatedStyle} />}
+        <Drawer.Screen name="Settings">
+          {(props) => (
+            <DrawerScreenContainer>
+              <Settings {...props} />
+            </DrawerScreenContainer>
+          )}
         </Drawer.Screen>
       </Drawer.Navigator>
-    </Animated.View>
+    </View>
   );
 };
 

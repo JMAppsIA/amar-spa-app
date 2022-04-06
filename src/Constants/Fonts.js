@@ -23,13 +23,24 @@
     'SFProDisplay-UltralightItalic': require('Assets/fonts/SFProDisplay-UltralightItalic.ttf')
 };
 const type = {
-    primary: 'SFProDisplay-Regular',
-    secondary: 'SFProDisplay-Medium',
-    medium: 'SFProDisplay-Medium',
+    black: 'SFProDisplay-Black',
+    blackItalic: 'SFProDisplay-BlackItalic',
     bold: 'SFProDisplay-Bold',
-    semi: 'SFProDisplay-Semibold',
-    stylish: 'SFProDisplay-ThinItalic',
-    italic: 'SFProDisplay-LightItalic',
+    boldItalic: 'SFProDisplay-BoldItalic',
+    heavy: 'SFProDisplay-Heavy',
+    heavyItalic: 'SFProDisplay-HeavyItalic',
+    light: 'SFProDisplay-Light',
+    lightItalic: 'SFProDisplay-LightItalic',
+    medium: 'SFProDisplay-Medium',
+    mediumItalic: 'SFProDisplay-MediumItalic',
+    regular: 'SFProDisplay-Regular',
+    regularItalic: 'SFProDisplay-RegularItalic',
+    semiBold: 'SFProDisplay-Semibold',
+    semiBoldItalic: 'SFProDisplay-SemiboldItalic',
+    thin: 'SFProDisplay-Thin',
+    thinItalic: 'SFProDisplay-ThinItalic',
+    ultraLight: 'SFProDisplay-Ultralight',
+    ultraLightItalic: 'SFProDisplay-UltralightItalic'
 };
 
 const Fonts = { customFonts, type };
